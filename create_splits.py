@@ -18,6 +18,33 @@ def split(source, destination):
         - destination [str]: destination data directory, contains 3 sub folders: train / val / test
     """
     # TODO: Implement function
+    # Constants to Adjust the train, val and test data sets
+    P_TRAIN = 0.8 
+    P_VAL   = 0.1 
+    P_TEST = (1 - P_TRAIN, P_VAL)
+
+    # Get all the files in the source directory 
+    files = glob.glob(os.path.join(source,"*.tfrecord"))
+    random.shuffle(files)
+
+    n_total = len(files)
+    n_train = int(P_TRAIN * n_total)
+    n_val   = int(P_VAL * n_total)
+    n_test  = n_total - n_train - n_val 
+
+    split = {
+        "train" : files[:n_train],
+        "val"   : files[n_train:n_train + n_val],
+        "test"  : files[n_train + n_val:]    
+    }
+
+    for split_name, split_files in splits.items():
+        split_dir = os.path.join(destination, split_name)
+        os.makedirs(split_dir, exist_ok=True)
+        for f in split_files:
+            dest_file = os.path.join(split_dir, os.path.basename(f))
+
+
 
 
 if __name__ == "__main__":
