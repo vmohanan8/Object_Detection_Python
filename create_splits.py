@@ -19,6 +19,7 @@ def split(source, destination):
     """
     # TODO: Implement function
     # Constants to Adjust the train, val and test data sets
+    # Percentage of files to split between Training, valuation and testing
     P_TRAIN = 0.8 
     P_VAL   = 0.1 
     P_TEST = (1 - P_TRAIN, P_VAL)
@@ -38,7 +39,7 @@ def split(source, destination):
         "test"  : files[n_train + n_val:]    
     }
 
-    for split_name, split_files in splits.items():
+    for split_name, split_files in split.items():
         split_dir = os.path.join(destination, split_name)
         os.makedirs(split_dir, exist_ok=True)
         for f in split_files:
