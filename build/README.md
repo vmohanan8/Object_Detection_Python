@@ -5,7 +5,7 @@
 * NVIDIA GPU with the latest driver installed
 * docker / nvidia-docker
 
-This build has been tested with Nvidia Drivers 460.91.03 and CUDA 11.2 on a Ubutun 20.04 machine.
+This build has been tested with Nvidia Drivers 460.91.03 and CUDA 11.2 on a Ubuntu 20.04 machine.
 Please update the base image if you plan on using older versions of CUDA.
 
 ## Build
